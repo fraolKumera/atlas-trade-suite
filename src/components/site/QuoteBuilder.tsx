@@ -27,9 +27,9 @@ const contactSchema = z.object({
 
 export function QuoteBuilder() {
   const [step, setStep] = useState(0);
-  const [cargo, setCargo] = useState(CARGO[0]);
+  const [cargo, setCargo] = useState<string>("Agricultural Produce");
   const [weight, setWeight] = useState("24");
-  const [method, setMethod] = useState(METHODS[1]);
+  const [method, setMethod] = useState<string>("Ocean Freight — FCL");
   const [origin, setOrigin] = useState("djibouti");
   const [dest, setDest] = useState("rotterdam");
   const [form, setForm] = useState({ name: "", email: "", company: "", notes: "" });
