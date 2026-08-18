@@ -48,7 +48,7 @@ export function RouteVisualizer() {
 
   const stats = useMemo(() => {
     const d = distance(origin, dest);
-    const ocean = Math.max(9, Math.round(d * 1.35 + 6));
+    const ocean = Math.max(9, Math.round(d * 0.85 + 6));
     const air = Math.max(2, Math.round(d * 0.09 + 1.5));
     const cargo = Array.from(
       new Set([...(CARGO[origin.region] ?? []), ...(CARGO[dest.region] ?? [])]),
