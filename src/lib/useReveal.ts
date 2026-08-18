@@ -17,7 +17,7 @@ export function useRevealRoot<T extends HTMLElement = HTMLDivElement>() {
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+      { threshold: 0.01, rootMargin: "0px 0px -40px 0px" },
     );
     items.forEach((item) => io.observe(item));
     return () => io.disconnect();
@@ -48,7 +48,7 @@ export function useCountUp(target: number, duration = 1600) {
         };
         raf = requestAnimationFrame(tick);
       },
-      { threshold: 0.4 },
+      { threshold: 0.05 },
     );
     io.observe(el);
     return () => {
