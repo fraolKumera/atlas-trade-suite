@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/kokora-logo.jpg.asset.json";
+import logo from "@/assets/kokora-logo.png";
 import { ThemeToggle } from "./theme";
 import { Button } from "@/components/ui/button";
 
 const links = [
   { href: "#routes", label: "Trade Routes" },
   { href: "#commodities", label: "Commodities" },
+  { href: "#operations", label: "Operations" },
   { href: "#services", label: "Services" },
   { href: "#quote", label: "Quote" },
   { href: "#trust", label: "Compliance" },
@@ -33,7 +34,7 @@ export function Nav() {
       >
         <a href="#top" className="flex min-w-0 items-center gap-3">
           <img
-            src={logo.url}
+            src={logo}
             alt="Kokora Import & Export logo"
             width={44}
             height={44}

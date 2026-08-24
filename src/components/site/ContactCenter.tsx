@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import logo from "@/assets/kokora-logo.jpg.asset.json";
+import logo from "@/assets/kokora-logo.png";
 
 const OFFICES = [
   {
@@ -191,7 +191,7 @@ export function ContactCenter() {
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 border-t border-border pt-8 sm:flex sm:justify-between">
           <div className="flex min-w-0 items-center gap-3">
             <img
-              src={logo.url}
+              src={logo}
               alt="Kokora Import & Export logo"
               width={40}
               height={40}

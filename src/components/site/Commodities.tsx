@@ -6,6 +6,11 @@ import agri from "@/assets/agri.jpg";
 import minerals from "@/assets/minerals.jpg";
 import manufactured from "@/assets/manufactured.jpg";
 import raw from "@/assets/raw.jpg";
+import humeraWarehouse from "@/assets/photos/humera-sesame-warehouse.png";
+import whiteSesame from "@/assets/photos/white-sesame-closeup.png";
+import soybeanField from "@/assets/photos/soybean-field.png";
+import petResin from "@/assets/photos/pet-resin-bag.png";
+import sesameTexture from "@/assets/photos/sesame-texture.png";
 
 const CATEGORIES = [
   "All",
@@ -25,6 +30,20 @@ const PRODUCTS: {
   season: string;
 }[] = [
   {
+    name: "Humera Sesame Seed",
+    category: "Agricultural Produce",
+    image: humeraWarehouse,
+    specs: "99.5% purity · FFA <2% · 50kg PP",
+    season: "Peak: Dec – Apr",
+  },
+  {
+    name: "White Hulled Sesame",
+    category: "Agricultural Produce",
+    image: whiteSesame,
+    specs: "Hulled · Moisture <6% · Food grade",
+    season: "Peak: Dec – Apr",
+  },
+  {
     name: "Washed Arabica Coffee",
     category: "Agricultural Produce",
     image: agri,
@@ -32,11 +51,18 @@ const PRODUCTS: {
     season: "Peak: Nov – Mar",
   },
   {
-    name: "Humera Sesame Seed",
+    name: "Oilseed & Soybean Lots",
     category: "Agricultural Produce",
-    image: agri,
-    specs: "99.5% purity · FFA <2% · 50kg PP",
-    season: "Peak: Dec – Apr",
+    image: soybeanField,
+    specs: "Contract grade · Bulk or bagged",
+    season: "Peak: Oct – Feb",
+  },
+  {
+    name: "Sesame Seed (Natural)",
+    category: "Agricultural Produce",
+    image: sesameTexture,
+    specs: "Machine cleaned · Export bags",
+    season: "Year-round",
   },
   {
     name: "Tantalum & Ore Concentrate",
@@ -53,17 +79,17 @@ const PRODUCTS: {
     season: "Year-round",
   },
   {
+    name: "Bottle-Grade PET Resin",
+    category: "Manufactured Goods",
+    image: petResin,
+    specs: "Food-contact grade · 1100kg FIBC",
+    season: "Year-round",
+  },
+  {
     name: "Palletised Consumer Goods",
     category: "Manufactured Goods",
     image: manufactured,
     specs: "Shrink-wrapped · Export cartons",
-    season: "Year-round",
-  },
-  {
-    name: "Industrial Spare Parts",
-    category: "Manufactured Goods",
-    image: manufactured,
-    specs: "HS-coded · Crated · Insured",
     season: "Year-round",
   },
   {

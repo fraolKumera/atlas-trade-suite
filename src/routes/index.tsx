@@ -3,6 +3,7 @@ import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
 import { RouteVisualizer } from "@/components/site/RouteVisualizer";
 import { Commodities } from "@/components/site/Commodities";
+import { Operations } from "@/components/site/Operations";
 import { Services } from "@/components/site/Services";
 import { QuoteBuilder } from "@/components/site/QuoteBuilder";
 import { Trust } from "@/components/site/Trust";
@@ -37,6 +38,7 @@ function Index() {
         <Hero />
         <RouteVisualizer />
         <Commodities />
+        <Operations />
         <Services />
         <QuoteBuilder />
         <Trust />
