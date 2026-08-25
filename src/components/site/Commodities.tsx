@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import agri from "@/assets/agri.jpg";
-import manufactured from "@/assets/manufactured.jpg";
 import humeraWarehouse from "@/assets/photos/humera-sesame-warehouse.png";
 import whiteSesame from "@/assets/photos/white-sesame-closeup.png";
 import soybeanField from "@/assets/photos/soybean-field.png";
@@ -58,12 +57,6 @@ const PRODUCTS: {
     category: "Manufactured Goods",
     image: petResin,
     specs: "Food-contact grade · 1100kg FIBC",
-  },
-  {
-    name: "Palletised Consumer Goods",
-    category: "Manufactured Goods",
-    image: manufactured,
-    specs: "Shrink-wrapped · Export cartons",
   },
 ];
 
