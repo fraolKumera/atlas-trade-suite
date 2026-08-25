@@ -3,9 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import agri from "@/assets/agri.jpg";
-import minerals from "@/assets/minerals.jpg";
 import manufactured from "@/assets/manufactured.jpg";
-import raw from "@/assets/raw.jpg";
 import humeraWarehouse from "@/assets/photos/humera-sesame-warehouse.png";
 import whiteSesame from "@/assets/photos/white-sesame-closeup.png";
 import soybeanField from "@/assets/photos/soybean-field.png";
@@ -15,9 +13,7 @@ import sesameTexture from "@/assets/photos/sesame-texture.png";
 const CATEGORIES = [
   "All",
   "Agricultural Produce",
-  "Minerals",
   "Manufactured Goods",
-  "Raw Materials",
 ] as const;
 
 type Category = (typeof CATEGORIES)[number];
@@ -65,20 +61,6 @@ const PRODUCTS: {
     season: "Year-round",
   },
   {
-    name: "Tantalum & Ore Concentrate",
-    category: "Minerals",
-    image: minerals,
-    specs: "Assay certified · Drum packed",
-    season: "Year-round",
-  },
-  {
-    name: "Rough Gemstone Lots",
-    category: "Minerals",
-    image: minerals,
-    specs: "Graded lots · Origin documented",
-    season: "Year-round",
-  },
-  {
     name: "Bottle-Grade PET Resin",
     category: "Manufactured Goods",
     image: petResin,
@@ -90,20 +72,6 @@ const PRODUCTS: {
     category: "Manufactured Goods",
     image: manufactured,
     specs: "Shrink-wrapped · Export cartons",
-    season: "Year-round",
-  },
-  {
-    name: "Cotton Bales",
-    category: "Raw Materials",
-    image: raw,
-    specs: "Middling · 220kg bales",
-    season: "Peak: Oct – Feb",
-  },
-  {
-    name: "Wet Blue Hides & Skins",
-    category: "Raw Materials",
-    image: raw,
-    specs: "Grade A/B · Chilled logistics",
     season: "Year-round",
   },
 ];

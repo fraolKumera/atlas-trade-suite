@@ -12,9 +12,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { HUBS } from "./RouteVisualizer";
+import { DEST_HUBS, HUBS, ORIGIN_HUB_ID } from "./RouteVisualizer";
 
-const CARGO = ["Agricultural Produce", "Minerals", "Manufactured Goods", "Raw Materials"];
+const CARGO = ["Agricultural Produce", "Manufactured Goods"];
 const METHODS = ["Air Freight", "Ocean Freight — FCL", "Ocean Freight — LCL", "Overland"];
 const STEPS = ["Cargo", "Method", "Route", "Contact"];
 
@@ -30,12 +30,11 @@ export function QuoteBuilder() {
   const [cargo, setCargo] = useState<string>("Agricultural Produce");
   const [weight, setWeight] = useState("24");
   const [method, setMethod] = useState<string>("Ocean Freight — FCL");
-  const [origin, setOrigin] = useState("djibouti");
   const [dest, setDest] = useState("rotterdam");
   const [form, setForm] = useState({ name: "", email: "", company: "", notes: "" });
   const [sent, setSent] = useState(false);
 
-  const originName = HUBS.find((h) => h.id === origin)?.name ?? "";
+  const originName = HUBS.find((h) => h.id === ORIGIN_HUB_ID)?.name ?? "Addis Ababa";
   const destName = HUBS.find((h) => h.id === dest)?.name ?? "";
 
   const submit = () => {
@@ -146,18 +145,9 @@ export function QuoteBuilder() {
                     <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                       Origin
                     </label>
-                    <Select value={origin} onValueChange={setOrigin}>
-                      <SelectTrigger className="mt-2">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {HUBS.map((h) => (
-                          <SelectItem key={h.id} value={h.id}>
-                            {h.name}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <p className="mt-2 rounded-md border border-border bg-secondary/40 px-3 py-2 text-sm font-medium">
+                      Ethiopia — {originName}
+                    </p>
                   </div>
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
@@ -168,7 +158,7 @@ export function QuoteBuilder() {
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        {HUBS.map((h) => (
+                        {DEST_HUBS.map((h) => (
                           <SelectItem key={h.id} value={h.id}>
                             {h.name}
                           </SelectItem>
@@ -248,7 +238,7 @@ export function QuoteBuilder() {
               ["Cargo", cargo],
               ["Volume", `${weight || "—"} MT`],
               ["Method", method],
-              ["Route", `${originName} → ${destName}`],
+              ["Route", `Ethiopia → ${destName}`],
               ["Contact", form.name || "—"],
             ].map(([k, v]) => (
               <div key={k} className="flex items-start justify-between gap-4 border-b border-border pb-3">

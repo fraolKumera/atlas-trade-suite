@@ -11,9 +11,11 @@ import { Badge } from "@/components/ui/badge";
 
 type Hub = { id: string; name: string; region: string; x: number; y: number };
 
+export const ORIGIN_HUB_ID = "addis";
+
 export const HUBS: Hub[] = [
-  { id: "djibouti", name: "Djibouti", region: "East Africa", x: 60, y: 55 },
   { id: "addis", name: "Addis Ababa", region: "East Africa", x: 58.5, y: 58 },
+  { id: "djibouti", name: "Djibouti", region: "East Africa", x: 60, y: 55 },
   { id: "jebelali", name: "Jebel Ali", region: "Middle East", x: 66, y: 48 },
   { id: "rotterdam", name: "Rotterdam", region: "Europe", x: 48.5, y: 27 },
   { id: "genoa", name: "Genoa", region: "Europe", x: 50, y: 33 },
@@ -24,11 +26,13 @@ export const HUBS: Hub[] = [
   { id: "durban", name: "Durban", region: "Southern Africa", x: 55, y: 76 },
 ];
 
+export const DEST_HUBS = HUBS.filter((h) => h.id !== ORIGIN_HUB_ID);
+
 const CARGO: Record<string, string[]> = {
   "East Africa": ["Coffee", "Sesame", "Pulses", "Leather"],
   "Middle East": ["Pulses", "Livestock feed", "Manufactured goods"],
   Europe: ["Specialty coffee", "Oilseeds", "Textiles"],
-  "East Asia": ["Minerals", "Raw hides", "Industrial inputs"],
+  "East Asia": ["Industrial inputs", "Oilseeds", "Sesame"],
   "South Asia": ["Sesame", "Soybean", "Fertilizer"],
   "North America": ["Specialty coffee", "Spices", "Honey"],
   "South America": ["Fertilizer", "Machinery"],
@@ -40,10 +44,9 @@ function distance(a: Hub, b: Hub) {
 }
 
 export function RouteVisualizer() {
-  const [originId, setOriginId] = useState("djibouti");
   const [destId, setDestId] = useState("rotterdam");
 
-  const origin = HUBS.find((h) => h.id === originId)!;
+  const origin = HUBS.find((h) => h.id === ORIGIN_HUB_ID)!;
   const dest = HUBS.find((h) => h.id === destId)!;
 
   const stats = useMemo(() => {
@@ -69,8 +72,8 @@ export function RouteVisualizer() {
             Global trade route visualizer
           </h2>
           <p className="mt-3 text-muted-foreground">
-            Pick an origin and destination hub — or tap a node on the map — to preview transit
-            windows and the cargo classes we already move on that corridor.
+            All shipments originate in Ethiopia. Pick a destination hub — or tap a node on the map —
+            to preview transit windows and the cargo classes we already move on that corridor.
           </p>
         </div>
 
@@ -131,17 +134,15 @@ export function RouteVisualizer() {
               )}
 
               {HUBS.map((hub) => {
-                const active = hub.id === originId || hub.id === destId;
+                const isOrigin = hub.id === ORIGIN_HUB_ID;
+                const active = isOrigin || hub.id === destId;
                 return (
                   <g
                     key={hub.id}
-                    onClick={() =>
-                      hub.id === originId
-                        ? undefined
-                        : setDestId(hub.id === destId ? hub.id : hub.id)
-                    }
-                    onDoubleClick={() => setOriginId(hub.id)}
-                    className="cursor-pointer"
+                    onClick={() => {
+                      if (!isOrigin) setDestId(hub.id);
+                    }}
+                    className={isOrigin ? "cursor-default" : "cursor-pointer"}
                   >
                     <circle
                       cx={hub.x}
@@ -175,7 +176,7 @@ export function RouteVisualizer() {
               })}
             </svg>
             <p className="px-2 pb-1 text-xs text-muted-foreground">
-              Tap a hub to set the destination, double-tap to set the origin.
+              Origin is always Ethiopia. Tap a hub to set the destination.
             </p>
           </div>
 
@@ -184,18 +185,9 @@ export function RouteVisualizer() {
               <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Origin hub
               </label>
-              <Select value={originId} onValueChange={setOriginId}>
-                <SelectTrigger className="mt-2 w-full">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {HUBS.map((h) => (
-                    <SelectItem key={h.id} value={h.id}>
-                      {h.name} — {h.region}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <p className="mt-2 rounded-md border border-border bg-secondary/40 px-3 py-2 text-sm font-medium">
+                Ethiopia — Addis Ababa
+              </p>
 
               <label className="mt-5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Destination hub
@@ -205,7 +197,7 @@ export function RouteVisualizer() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {HUBS.map((h) => (
+                  {DEST_HUBS.map((h) => (
                     <SelectItem key={h.id} value={h.id}>
                       {h.name} — {h.region}
                     </SelectItem>
@@ -218,7 +210,7 @@ export function RouteVisualizer() {
               <div className="flex items-center gap-3">
                 <Route className="h-4 w-4 shrink-0 text-leaf" />
                 <p className="min-w-0 text-sm font-semibold">
-                  {origin.name} <span className="text-muted-foreground">→</span> {dest.name}
+                  Ethiopia <span className="text-muted-foreground">→</span> {dest.name}
                 </p>
               </div>
               {stats.same ? (

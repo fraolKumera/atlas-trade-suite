@@ -18,7 +18,7 @@ Build a modern, highly interactive, and ultra-professional import/export & globa
 
 3. Product & Commodity Showcase:
 
-- Grid-based product catalog with filterable tabs (e.g., Agricultural Produce, Minerals, Manufactured Goods, Raw Materials).
+- Grid-based product catalog with filterable tabs (e.g., Agricultural Produce, Manufactured Goods).
 
 - Hover-activated cards with subtle elevation shadows showing high-res imagery, specs, seasonal availability badge, and a direct "Inquire About Product" button.
 
