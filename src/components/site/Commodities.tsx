@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import agri from "@/assets/agri.jpg";
 import manufactured from "@/assets/manufactured.jpg";
@@ -23,56 +22,48 @@ const PRODUCTS: {
   category: Exclude<Category, "All">;
   image: string;
   specs: string;
-  season: string;
 }[] = [
   {
     name: "Humera Sesame Seed",
     category: "Agricultural Produce",
     image: humeraWarehouse,
     specs: "99.5% purity · FFA <2% · 50kg PP",
-    season: "Peak: Dec – Apr",
   },
   {
     name: "White Hulled Sesame",
     category: "Agricultural Produce",
     image: whiteSesame,
     specs: "Hulled · Moisture <6% · Food grade",
-    season: "Peak: Dec – Apr",
   },
   {
     name: "Washed Arabica Coffee",
     category: "Agricultural Produce",
     image: agri,
     specs: "Grade 1–2 · 60kg jute · Screen 15+",
-    season: "Peak: Nov – Mar",
   },
   {
     name: "Oilseed & Soybean Lots",
     category: "Agricultural Produce",
     image: soybeanField,
     specs: "Contract grade · Bulk or bagged",
-    season: "Peak: Oct – Feb",
   },
   {
     name: "Sesame Seed (Natural)",
     category: "Agricultural Produce",
     image: sesameTexture,
     specs: "Machine cleaned · Export bags",
-    season: "Year-round",
   },
   {
     name: "Bottle-Grade PET Resin",
     category: "Manufactured Goods",
     image: petResin,
     specs: "Food-contact grade · 1100kg FIBC",
-    season: "Year-round",
   },
   {
     name: "Palletised Consumer Goods",
     category: "Manufactured Goods",
     image: manufactured,
     specs: "Shrink-wrapped · Export cartons",
-    season: "Year-round",
   },
 ];
 
@@ -129,9 +120,6 @@ export function Commodities() {
                   loading="lazy"
                   className="h-44 w-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <Badge className="absolute left-3 top-3 rounded-full bg-accent text-accent-foreground">
-                  {p.season}
-                </Badge>
               </div>
               <div className="p-5">
                 <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">

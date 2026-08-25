@@ -7,34 +7,19 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import logo from "@/assets/kokora-logo.png";
 
+const PHONE_DISPLAY = "+251 92 895 5927";
+const PHONE_E164 = "251928955927";
+const WHATSAPP_URL = `https://wa.me/${PHONE_E164}`;
+const TELEGRAM_URL = `https://t.me/+${PHONE_E164}`;
+const TEL_URL = `tel:+${PHONE_E164}`;
+
 const OFFICES = [
   {
     city: "Addis Ababa",
-    country: "Ethiopia — Head Office",
+    country: "Ethiopia — Global Inquiry Center",
     tz: "Africa/Addis_Ababa",
     address: "Bole Road, Friendship Tower, 7th Floor",
-    phone: "+251 11 000 0000",
-  },
-  {
-    city: "Djibouti",
-    country: "Djibouti — Port Operations",
-    tz: "Africa/Djibouti",
-    address: "Doraleh Multipurpose Port, Block C",
-    phone: "+253 21 00 00 00",
-  },
-  {
-    city: "Dubai",
-    country: "UAE — Trade Desk",
-    tz: "Asia/Dubai",
-    address: "Jebel Ali Free Zone, JAFZA One",
-    phone: "+971 4 000 0000",
-  },
-  {
-    city: "Rotterdam",
-    country: "Netherlands — EU Office",
-    tz: "Europe/Amsterdam",
-    address: "Waalhaven Oostzijde, Port District",
-    phone: "+31 10 000 0000",
+    phone: PHONE_DISPLAY,
   },
 ];
 
@@ -89,6 +74,9 @@ export function ContactCenter() {
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
             Global inquiry center
           </h2>
+          <p className="mt-3 text-muted-foreground">
+            Based in Addis Ababa, Ethiopia. Reach our trade desk on WhatsApp, Telegram or phone.
+          </p>
         </div>
 
         <div className="reveal mt-10 grid gap-5 lg:grid-cols-2">
@@ -100,19 +88,22 @@ export function ContactCenter() {
               </p>
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <Button asChild size="lg" className="shadow-[var(--shadow-glow)]">
-                  <a href="https://wa.me/251110000000" target="_blank" rel="noreferrer">
+                  <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
                     <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="glass border-border">
-                  <a href="https://t.me/kokoratrade" target="_blank" rel="noreferrer">
+                  <a href={TELEGRAM_URL} target="_blank" rel="noreferrer">
                     <Send className="mr-2 h-4 w-4" /> Telegram
                   </a>
                 </Button>
               </div>
               <div className="mt-5 grid gap-2 text-sm text-muted-foreground">
                 <p className="flex items-center gap-2">
-                  <Phone className="h-4 w-4 text-leaf" /> +251 11 000 0000
+                  <Phone className="h-4 w-4 shrink-0 text-leaf" />
+                  <a href={TEL_URL} className="hover:text-foreground">
+                    {PHONE_DISPLAY}
+                  </a>
                 </p>
                 <p className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-leaf" /> trade@kokora-export.com
@@ -120,7 +111,7 @@ export function ContactCenter() {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3">
               {OFFICES.map((o) => (
                 <div key={o.city} className="lift glass rounded-3xl p-5">
                   <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-2">
